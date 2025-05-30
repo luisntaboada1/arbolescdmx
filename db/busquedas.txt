@@ -1,0 +1,7 @@
+ver todos los arboles
+por posicion
+filtar por especie
+por acciones pendientes (todos con acciones pendientes)
+por acciones pendientes en especifico
+por alcaldia
+por altura

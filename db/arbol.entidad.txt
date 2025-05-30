@@ -1,0 +1,45 @@
+1. id
+
+2. especie
+
+3. posición
+
+4. foto
+
+5. Dirección
+	5.1. Calle
+	5.2. Numero
+	5.3. Colonia
+	5.4. Alcaldía
+	5.5. Referencias
+	5.6. Codigo postal 
+
+6. Medidas
+	6.1. Altura
+	6.2. Diámetro de la base
+	6.3. Diámetro del tronco
+	6.4. Diámetro de la copa
+	6.5. Inclinación del tronco
+	6.6. Estructura general del árbol
+		6.6.1. Troncos múltiples
+		6.6.2. Ramas muy largas
+		6.6.3. Troncos codominantes
+		6.6.4. Ramas codominantes
+		6.6.5. Copa mal equilibrada
+7. Salud
+	7.1. Estado de las ramas
+	7.2. Estado del tronco
+
+8. Acciones necesarias/Estado
+	8.1. Sin problemas
+	8.2. Necesita podarse
+	8.3. Necesita cortarse
+	8.4. Urgencia
+	8.5. Descripción
+		8.5.1. Obstruye infraestructura publica o privada
+		8.5.2. Esta por caerse
+		8.5.3. Otro
+			8.5.3.1. Descripción escrita
+
+9. Ultima inspección
+

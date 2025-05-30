@@ -1,0 +1,108 @@
+/* Base page styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 20px;
+  
+}
+
+/* Container */
+.tree_box {
+  display: grid;
+  grid-template-columns: 100px 3fr 1fr;
+  height: 100px;
+  align-items: center;
+  background: #E6F5FB;          /* light, cool background */
+  border-radius: 16px;          /* smooth corners */
+  overflow: hidden;             /* clip children */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+}
+
+/* Left panel (profile picture) */
+.pfp_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(83, 172, 89, 1);
+  height: 100%;
+  width: 100%;
+}
+
+.pfp_img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Middle panel (text info) */
+.tree_info {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tree_info p {
+  margin: 0;
+  color: #1B262C;
+}
+
+.tree_id {
+  font-weight: 700;
+}
+
+.tree_species,
+.status {          /* note: renamed .Status → .status for consistency */
+  font-weight: 500;
+  color: #333;
+}
+
+/* Right panel (buttons) */
+.tree_buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #ccd9df;
+  height: 100%;
+}
+
+.tree_buttons button {
+  width: 80px;
+  height: 42px;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFF;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  font-size: 16px;
+}
+
+.edit_btn {
+  background: #FF8C00;   /* orange pencil */
+}
+
+.edit_btn:hover {
+  background: #ffac2e;   /* lighter orange on hover */
+}
+
+.edit_btn:active{
+  background: #FF9800;   /* darker orange on click */
+
+}
+
+.delete_btn {
+  background: #F44336;   /* red trash */
+}
+
+.delete_btn:hover {
+  background: #eb5d5d;   /* lighter red on hover */
+}
+
+.delete_btn:active {
+  background: #F44336;   /* darker red on click */
+}

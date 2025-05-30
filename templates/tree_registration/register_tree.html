@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Registro arbol</title>
+        <link rel="stylesheet" href="css/register_tree_general.css">
+        <link rel="stylesheet" href="css/register_tree_header.css">
+        <link rel="stylesheet" href="css/register_tree_photos.css">
+        <link rel="stylesheet" href="css/register_tree_form.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="header"></div>
+        
+        <div class="photos">
+            <p>Subir hasta 4 fotos del arbol</p>
+            <div class="foto_principal">
+                <label for="foto_principal">
+                    <input class="input_foto_principal" type="file" accept="image/*" id="foto_principal" name="foto_principal" hidden>
+                    <img class="" src="../imgs/camera.jpg" alt="Foto1">
+                </label>
+            </div>
+            
+            <div class="fotos_secundarias">
+                <label for="foto_secundaria1">
+                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria1" hidden>
+                    <img class="" src="../imgs/camera.jpg" alt="Foto1">
+                </label>
+                
+                <label for="foto_secundaria2">
+                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria2" hidden>
+                    <img class="" src="../imgs/camera.jpg" alt="Foto2">
+                </label>
+
+                <label for="foto_secundaria3">
+                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria3" hidden>
+                    <img class="" src="../imgs/camera.jpg" alt="Foto3">
+                </label>
+                
+            </div>
+        </div>
+        
+        <div class="form">
+            <div class="species_form">
+                <p>Especie</p>
+                <select class="species_selection">
+                    <option value="" disabled selected>--Seleccione la especie--</option>
+                    <option value="1">Trueno (Ligustrum lucidum)</option>
+                    <option value="2">Jacaranda (Jacaranda mimosaefolia)</option>
+                    <option value="3">Fresno (Fraxinus uhdei)</option>
+                    <option value="4">Hule (Ficus elastica)</option>
+                    <option value="5">Palmera canaria (Phoenix canariensis)</option>
+                    <option value="6">Colorín (Erythrina coralloides)</option>
+                    <option value="7">Ficus benjamina (Ficus benjamina)</option>
+                    <option value="8">Álamo blanco (Populus alba)</option>
+                    <option value="9">Pirul (Schinus molle)</option>
+                    <option value="10">Liquidámbar (Liquidambar styraciflua)</option>
+                    <option value="11">Otro</option>
+                </select>
+            </div>
+            
+            
+            <p>Dirección mas cercana</p>
+            <div class="directions_form">
+                <div class="d1">
+                    <select class="ialcaldia">
+                        <option value="" disabled selected>--Alcaldia--</option>
+                         <option value="alvaro_obregon">Álvaro Obregón</option>
+                        <option value="azcapotzalco">Azcapotzalco</option>
+                        <option value="benito_juarez">Benito Juárez</option>
+                        <option value="coyoacan">Coyoacán</option>
+                        <option value="cuajimalpa_de_morelos">Cuajimalpa de Morelos</option>
+                        <option value="cuauhtemoc">Cuauhtémoc</option>
+                        <option value="gustavo_a_madero">Gustavo A. Madero</option>
+                        <option value="iztapalapa">Iztapalapa</option>
+                        <option value="la_magdalena_contreras">La Magdalena Contreras</option>
+                        <option value="miguel_hidalgo">Miguel Hidalgo</option>
+                        <option value="milpa_alta">Milpa Alta</option>
+                        <option value="tlahuac">Tláhuac</option>
+                        <option value="tlalpan">Tlalpan</option>
+                        <option value="xochimilco">Xochimilco</option>
+                        <option value="venustiano_carranza">Venustiano Carranza</option>
+                    </select>
+                    
+                    <input class="icolonia" type="text" placeholder="Colonia">
+                </div>
+
+                <div class="d2">
+                    <input class="" type="text" placeholder="Calle">
+                    <input type="text" placeholder="Número">
+                    <input type="text" placeholder="Codigo postal">
+                </div>
+
+                <div class="d3">
+                    <input type="text" placeholder="Referencias">
+                    <input type="text" placeholder="Latitud">
+                    <input type="text" placeholder="Longitud">    
+                </div>
+
+            </div>
+            
+            <p>Dimensiones</p>
+            <div class="dimensions_form">
+                <input class="ialtura" type="text" placeholder="Altura">
+                <input class="idiametro_base" type="text" placeholder="Diametro de la base">
+                <input class="idiametro_copa" type="text" placeholder="Diametro de la copa">
+                <input class="iinclinacion_trono" type="text" placeholder="Inclinacion del tronco">
+                <input class="idiametro_copa" type="text" placeholder="Diametro de la copa">
+                <select name="estructura" id="estructura">
+                    <option value="" disable selected>--Seleccione la estructura--</option>
+                    <option value="1">Copa mal equilibrada</option>
+                    <option value="2">Ramas muy largas</option>
+                    <option value="3">Troncos múltiples</option>
+                    <option value="4">Troncos codominantes</option>
+                    <option value="5">Ramas codominantes</option>
+                </select>
+
+            </div>
+
+            <p>Salud</p>
+            <div class="health_form">
+                <select name="condicion_salud" id="condicion_salud">
+                    <option value="" disabled selected>--Seleccione la condicion de salud--</option>
+                    <option value="muy_buena">Muy buena</option>
+                    <option value="buena">Buena</option>
+                    <option value="susceptible_de_mejora">Susceptible de mejora</option>
+                    <option value="irrecuperable">Irrecuperable</option>
+                </select>
+
+            </div>
+
+            <p>Acciones necesarias (opcional)</p>
+            <div class="actions_form">
+                <select class="select_action">
+                    <option value="" disabled selected>--Seleccione una accion--</option>
+                    <option value="podar">Podar</option>
+                    <option value="talar">Talar</option>
+                    <option value="desinfectar">Desinfectar</option>
+                    <option value="trasplantar">Trasplantar</option>
+                    <option value="otro">Otro</option>
+                </select>
+                
+                <select class="action_urgency">
+                    <option value="" disabled selected>--Seleccione la urgencia--</option>
+                    <option value="baja">1.Muy Baja</option>
+                    <option value="moderada">2. Moderada</option>
+                    <option value="alta">3. Alta</option>
+                    <option value="muy alta">4. Muy Alta</option>
+                </select>
+
+                <select class="input_action_description">
+                    <option value="" disabled selected>--Seleccione la descripcion de la accion--</option>
+                    <option value="obstruccion">Obstruccion de infraestructura</option>
+                    <option value="riesgo">Riesgo de caida</option>
+                    <option value="enfermedad">Plagas</option>
+                    <option value="otro">Otro</option>
+                    
+                </select>
+
+
+            </div>
+
+            <div>
+                <p>Ultima inspeccion</p>
+                <select id="day" name="day">
+                    <option value="" disabled selected hidden>-- Dia --</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+
+                
+                <select id="month" name="month">
+                    <option value="" disabled selected hidden>-- Mes --</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+
+                <input class="input_año" type="number" id="year" name="year" placeholder="Año" min="1900" max="2026">
+
+            </div>
+
+        </div>      
+    
+    </body>
+
+</html>

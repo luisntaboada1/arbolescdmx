@@ -1,0 +1,92 @@
+.photos {
+  position: fixed;
+  top: 75px;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  
+  /* light background, rounded corners, subtle shadow */
+  background-color: #F7F9F2;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.photos > p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1B3A1A;
+}
+
+.foto_principal {
+  flex: 1;               /* take available vertical space */
+  background-color: #E5EADF;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.foto_principal label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.foto_principal img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.input_foto_principal{
+    height: 100%;
+    width: 100%;
+    border-style: solid;
+    justify-self: center;
+    cursor: pointer;
+}
+
+
+.fotos_secundarias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.fotos_secundarias img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fotos_secundarias label {
+  /* square aspect, pale bg, rounded corners */
+  aspect-ratio: 1 / 1;
+  background-color: #E5EADF;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.fotos_secundarias img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.input_foto_secundaria{
+    height: 100%;
+    width: 100%;
+    border-style: solid;
+    cursor: pointer;
+}
+
