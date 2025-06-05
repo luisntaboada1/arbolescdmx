@@ -4,7 +4,7 @@ from .models import *
 class treeForm(forms.ModelForm):
     class Meta:
         model = Trees
-        fields = '__all__'
+        exclude = ["id"]
 
 class healthStatusForm(forms.ModelForm):
     class Meta:
