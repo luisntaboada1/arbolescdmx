@@ -82,24 +82,14 @@
                 {% endif %}
 
                 <p>Especie</p>
+                {{form.species}}
+                
                 {% if form.non_field_errors %}
                     <p class="error">{{ form.non_field_errors }}</p>
                 {% endif %}
                 
-                <select class="species_selection" name="species" id="species">
-                    <option value="" disabled selected>--Seleccione la especie--</option>
-                    <option value="1">Trueno (Ligustrum lucidum)</option>
-                    <option value="2">Jacaranda (Jacaranda mimosaefolia)</option>
-                    <option value="3">Fresno (Fraxinus uhdei)</option>
-                    <option value="4">Hule (Ficus elastica)</option>
-                    <option value="5">Palmera canaria (Phoenix canariensis)</option>
-                    <option value="6">Colorín (Erythrina coralloides)</option>
-                    <option value="7">Ficus benjamina (Ficus benjamina)</option>
-                    <option value="8">Álamo blanco (Populus alba)</option>
-                    <option value="9">Pirul (Schinus molle)</option>
-                    <option value="10">Liquidámbar (Liquidambar styraciflua)</option>
-                    <option value="11">Otro</option>
-                </select>
+                {{form.species_selection}}
+                
                 {% if form.species.errors %}
                     <p class="error">{{ form.species.errors }}</p>
                 {% endif %}
@@ -109,59 +99,53 @@
             <p>Dirección mas cercana</p>
             <div class="directions_form">
                 <div class="d1">
-                    <select class="ialcaldia" name="alcaldia" id="alcadia">
-                        <option value="" disabled selected>--Alcaldia--</option>
-                        <option value="alvaro_obregon">Álvaro Obregón</option>
-                        <option value="azcapotzalco">Azcapotzalco</option>
-                        <option value="benito_juarez">Benito Juárez</option>
-                        <option value="coyoacan">Coyoacán</option>
-                        <option value="cuajimalpa_de_morelos">Cuajimalpa de Morelos</option>
-                        <option value="cuauhtemoc">Cuauhtémoc</option>
-                        <option value="gustavo_a_madero">Gustavo A. Madero</option>
-                        <option value="iztapalapa">Iztapalapa</option>
-                        <option value="la_magdalena_contreras">La Magdalena Contreras</option>
-                        <option value="miguel_hidalgo">Miguel Hidalgo</option>
-                        <option value="milpa_alta">Milpa Alta</option>
-                        <option value="tlahuac">Tláhuac</option>
-                        <option value="tlalpan">Tlalpan</option>
-                        <option value="xochimilco">Xochimilco</option>
-                        <option value="venustiano_carranza">Venustiano Carranza</option>
-                    </select>
+                    
+                    {{form.alcaldia}}
+
                     {% if form.alcaldia.errors %}
                         <p class="error">{{ form.alcaldia.errors }}</p>
                     {% endif %}
 
-                    <input class="icolonia" type="text" name="colonia" placeholder="colonia">
+                    {{form.colonia}}
+
                     {% if form.colonia.errors %}
                         <p class="error">{{ form.colonia.errors }}</p>
                     {% endif %}
                 </div>
 
                 <div class="d2">
-                    <input type="text" name="calle" id="calle" placeholder="Calle">
+                    {{form.calle}}
                     {% if form.calle.errors %}
                         <p class="error">{{ form.calle.errors }}</p>
                     {% endif %}
-                    <input type="text" name="num" id="num" placeholder="Número">
+                    
+                    {{form.num}}
+
                     {% if form.num.errors %}
                         <p class="error">{{ form.num.errors }}</p>
                     {% endif %}
-                    <input type="text" name="cp" id="cp" placeholder="Codigo postal">
+                    
+                    {{form.cp}}
                     {% if form.cp.errors %}
                         <p class="error">{{ form.cp.errors }}</p>
                     {% endif %}
                 </div>
 
                 <div class="d3">
-                    <input type="text" name="reference" id="reference" placeholder="Referencias">
+                    {{form.reference}}
+
                     {% if form.reference.errors %}
                         <p class="error">{{ form.reference.errors }}</p>
                     {% endif %}
-                    <input type="text" name="latitude" id="latitude" placeholder="Latitud">
+                    
+                    {{form.latitude}}
+
                     {% if form.latitude.errors %}
                         <p class="error">{{ form.latitude.errors }}</p>
                     {% endif %}
-                    <input type="text" name="longitude" id="longitude" placeholder="Longitud"> 
+                    
+                    {{form.longitude}}
+
                     {% if form.longitude.errors %}
                         <p class="error">{{ form.longitude.errors }}</p>
                     {% endif %}   
@@ -171,39 +155,33 @@
             
             <p>Dimensiones</p>
             <div class="dimensions_form">
-                <input class="ialtura" type="text" name="height" id="height" placeholder="Altura">
+                {{form.height}}
                 {% if form.height.errors %}
                     <p class="error">{{ form.height.errors }}</p>
                 {% endif %}
 
-                <input class="idiametro_base" type="number" name="base_diameter" id="base_diameter" placeholder="Diametro de la base">
+                {{form.base_diameter}}
                 {% if form.base_diameter.errors %}
                     <p class="error">{{ form.base_diameter.errors }}</p>
                 {% endif %}
 
-                <input class="idiametro_copa" type="number" name="crown_diameter" id="crown_diameter" placeholder="Diametro de la copa">
+                {{form.crown_diameter}}
                 {% if form.crown_diameter.errors %}
                     <p class="error">{{ form.crown_diameter.errors }}</p>
                 {% endif %}
 
-                <input class="idiametro_tronco" type="number" name="trunk_diameter" id="trunk_diameter" placeholder="Diametro del tronco">
+                {{form.trunk_diameter}}
                 {% if form.trunk_diameter.errors %}
                     <p class="error">{{ form.trunk_diameter.errors }}</p>
                 {% endif %}
 
-                <input class="iinclinacion_trono" type="number" name="trunk_inclination" id="trunk_inclination" placeholder="Inclinacion del tronco">
+                {{form.trunk_diameter}}
                 {% if form.trunk_inclination.errors %}
                     <p class="error">{{ form.trunk_inclination.errors }}</p>
                 {% endif %}
 
-                <select name="structure" id="structure">
-                    <option value="" disable selected>--Seleccione la estructura--</option>
-                    <option value="1">Copa mal equilibrada</option>
-                    <option value="2">Ramas muy largas</option>
-                    <option value="3">Troncos múltiples</option>
-                    <option value="4">Troncos codominantes</option>
-                    <option value="5">Ramas codominantes</option>
-                </select>
+               {{form.structure}}
+
                 {% if form.structure.errors %}
                     <p class="error">{{ form.structure.errors }}</p>
                 {% endif %}
@@ -212,13 +190,7 @@
 
             <p>Salud</p>
             <div class="health_form">
-                    <select name="health_status" id="health_status">
-                    <option value="" disabled selected>--Seleccione la condicion de salud--</option>
-                    <option value="1">Muy buena</option>
-                    <option value="2">Buena</option>
-                    <option value="3">Susceptible de mejora</option>
-                    <option value="4">Irrecuperable</option>
-                </select>
+                {{form.health_status}}
                 {% if form.health_status.errors %}
                     <p class="error">{{ form.health_status.errors }}</p>
                 {% endif %}
@@ -258,7 +230,7 @@
 
             <div>
                 <p>Ultima inspeccion</p>
-                <input class="date_inspection" type="date" name="last_inspection" id="last_inspection">
+                {{form.last_inspection}}
                 {% if form.last_inspection.errors %}
                     <p class="error">{{ form.last_inspection.errors }}</p>
                 {% endif %}

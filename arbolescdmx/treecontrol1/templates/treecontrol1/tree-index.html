@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arboles</title>
+        <link rel="stylesheet" href="{% static 'treecontrol1/css/tree-index.css' %}">
+        <link rel="stylesheet" href="{% static 'treecontrol1/css/tree_box.css' %}">
+        <link rel="stylesheet" href="{% static 'treecontrol1/css/register_tree_general' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <div class="header"></div>
+        <div class="list">
+        {% block content %}
+            {% if trees %}
+                {% for tree in trees %}
+                    <div class="tree_box">
+                        
+                        <div class="pfp_box">
+                            <img class="pfp_img" src="{% static 'treecontrol1/images/jacaranda.webp' %}" alt="tree image">
+                        </div>
+                        
+                        <div class="tree_info">
+                            <div class="column1">
+                                <p class="tree_id">#ID: {{tree.id}}</p>
+                                <p class="tree_species">Especie: {{tree.species}}</p>
+                                <p class="direccion">Direccion: {{tree.alcaldia}}, {{tree.colonia}}, Calle {{tree.calle}} No. {{tree.num}} </p>
+                            </div>
+
+                            <div class="column2">
+                                <p class="status">Salud: {{tree.health_status}}</p>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="tree_buttons">
+                            <a class="edit_btn" href="{% url 'treecontrol1:tree_edit' tree.pk %}">e</a>
+
+                            <form class="delete_form" action=" {% url 'treecontrol1:tree_delete' tree.pk %}" method="post" >
+                                {% csrf_token %}
+                                <button class="delete_btn" type="submit">-</button>
+                            </form>
+                                
+                        </div>
+                    
+                    </div>
+                {% empty %}
+                <p>No hay ningun arbol registrado</p>
+                {% endfor %}
+            {% endif %}
+             
+        
+        {% endblock %}
+        </div>
+    </body>
+</html>
