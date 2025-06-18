@@ -1,9 +1,53 @@
-.header{
-    position: fixed;
-    display: flex;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 75px;
-    background-color: rgb(45, 212, 115)
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;      /* vertically center logo & buttons */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;             /* unchanged */
+  background-color: rgb(45, 212, 115); /* unchanged */
+  z-index: 1000;            /* keep it on top */
 }
+
+/* Logo container & image */
+.logo {
+  margin-left: 20px;        /* space from left edge */
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 70px;             /* gives breathing room within 75px header */
+  width: auto;
+}
+
+/* Button group */
+.buttons {
+  margin-left: auto;        /* pushes buttons to the right */
+  margin-right: 20px;       /* space from right edge */
+  display: flex;
+  gap: 15px;                /* even spacing between links */
+  align-items: center;
+}
+
+/* Individual links */
+.buttons a {
+  display: inline-block;
+  padding: 15px 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Hover/focus states */
+.buttons a:hover,
+.buttons a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+
+

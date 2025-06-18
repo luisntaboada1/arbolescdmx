@@ -17,40 +17,11 @@
   overflow-y: auto;
 }
 
-.photos > p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1B3A1A;
-}
 
 .foto_principal {
   flex: 1;               /* take available vertical space */
-  background-color: #E5EADF;
   border-radius: 8px;
   overflow: hidden;
-}
-
-.foto_principal label {
-  display: block;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-
-.foto_principal img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.input_foto_principal{
-    height: 100%;
-    width: 100%;
-    border-style: solid;
-    justify-self: center;
-    cursor: pointer;
 }
 
 
@@ -60,33 +31,99 @@
   gap: 8px;
 }
 
-.fotos_secundarias img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
+/* styles.css */
+.foto_principal label,
 .fotos_secundarias label {
-  /* square aspect, pale bg, rounded corners */
-  aspect-ratio: 1 / 1;
-  background-color: #E5EADF;
-  border-radius: 8px;
-  overflow: hidden;
   position: relative;
-  cursor: pointer;
+  display: block;
+}
+.foto_principal label img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 2;
 }
 
-.fotos_secundarias img {
+.fotos_secundarias label img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  z-index: 3;
+}
+
+.foto_principal label input[type="file"],
+.fotos_secundarias label input[type="file"] {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  object-fit: cover;
+  opacity: 0;          /* fully transparent but still receives clicks */
+  cursor: pointer;
+  z-index: 3;
 }
 
-.input_foto_secundaria{
-    height: 100%;
-    width: 100%;
-    border-style: solid;
-    cursor: pointer;
+.input_foto {  
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
 }
 
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;      /* vertically center logo & buttons */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;             /* unchanged */
+  background-color: rgb(45, 212, 115); /* unchanged */
+  z-index: 1000;            /* keep it on top */
+}
+
+body{
+    padding-top: 75px;
+}
+
+
+
+/* Logo container & image */
+.logo {
+  margin-left: 20px;        /* space from left edge */
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  height: 70px;             /* gives breathing room within 75px header */
+  width: auto;
+}
+
+/* Button group */
+.buttons {
+  margin-left: auto;        /* pushes buttons to the right */
+  margin-right: 20px;       /* space from right edge */
+  display: flex;
+  gap: 15px;                /* even spacing between links */
+  align-items: center;
+}
+
+/* Individual links */
+.buttons a {
+  display: inline-block;
+  padding: 15px 16px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Hover/focus states */
+.buttons a:hover,
+.buttons a:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}

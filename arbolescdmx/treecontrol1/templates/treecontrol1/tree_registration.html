@@ -14,261 +14,265 @@
     </head>
 
     <body>
-        <div class="header"></div>
-        
-        <div class="photos">
-            <p>Subir hasta 4 fotos del arbol</p>
-            <div class="foto_principal">
-                <label for="foto_principal">
-                    <input class="input_foto_principal" type="file" accept="image/*" id="foto_principal" name="foto_principal" hidden>
-                    <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto1">
-                </label>
+        <div class="header">
+            <div class="logo">
+                <img src="{% static 'treecontrol1/images/logo-circulo-blanco.png' %}">
             </div>
-            
-            <div class="fotos_secundarias">
-                <label for="foto_secundaria1">
-                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria1" hidden>
-                    <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto1">
-                </label>
-                
-                <label for="foto_secundaria2">
-                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria2" hidden>
-                    <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto2">
-                </label>
 
-                <label for="foto_secundaria3">
-                    <input class="input_foto_secundaria" type="file" accept="image/*" name="foto_secundaria3" hidden>
-                    <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto3">
-                </label>
-                
+            <div class="buttons">
+                <a class="home" >Menu</a>
+                <a class="index" href="% url 'treecontrol1:tree-index' %">Arboles</a>
+                <a class="register">Registrar arbol</a>
             </div>
         </div>
-
+        
         
         <form class="tree-registration" method="post" enctype="multipart/form-data">
-        
-        {% csrf_token %}
-        <div class="form">
-            {% if form.instance.pk %}
-                <p><strong>Editando arbol: #{{form.instance.pk}}</strong_></p>
-                <p>-----------------------</p>
-            {% endif %}
+            {% csrf_token %}    
+            <div class="photos">
+                {{ pformset.management_form }}
+                <p>Subir hasta 4 fotos del arbol</p>
+                <div class="foto_principal">
+                    <label for="id_photos-0-image">
+                        {{ pformset.forms.0.image }}
+                        <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto1">
+                    </label>
+                </div>
+                
+                <div class="fotos_secundarias">
+                    <label for="id_photos-1-image">
+                        {{ pformset.forms.1.image }}
+                        <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto1">
+                    </label>
+                    
+                    <label for="id_photos-2-image">
+                        {{ pformset.forms.2.image }}
+                        <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto2">
+                    </label>
+
+                    <label for="id_photos-3-image">
+                        {{ pformset.forms.3.image }}
+                        <img class="" src="{% static 'treecontrol1/images/camera.jpg' %}" alt="Foto3">
+                    </label>
+                    
+                </div>
+            </div>
+
             
-            <div class="species_form">
-                {% if form.errors %}
-                <div class="alert alert-danger">
-                    <p><strong>Error al registrar:</strong></p>
-                    <ul>
-                    {# Field‐specific errors #}
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                        <li>{{ field.label }}: {{ error }}</li>
+            <div class="form">
+                {% if form.instance.pk %}
+                    <p><strong>Editando arbol: #{{form.instance.pk}}</strong_></p>
+                    <p>-----------------------</p>
+                {% endif %}
+                
+                <div class="species_form">
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <p><strong>Error al registrar:</strong></p>
+                        <ul>
+                        {# Field‐specific errors #}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
 
-                    {# Non‐field errors (e.g. clean()‐level) #}
-                    {% for error in form.non_field_errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                    </ul>
-                </div>
-                {% endif %}
+                        {# Non‐field errors (e.g. clean()‐level) #}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                        </ul>
+                        
+                    </div>
+                    {% endif %}
 
-                {% if success %}
-                <div class="alert alert-success">
+                    {% if success %}
+                    <div class="alert alert-success">
+                        
+                        <p><strong>Arbol registrado correctamente</strong></p>
+                    </div>
+                    {% endif %}
+
+                    <p>Especie</p>
+                    {% if form.non_field_errors %}
+                        <p class="error">{{ form.non_field_errors }}</p>
+                    {% endif %}
                     
-                    <p><strong>Arbol registrado correctamente</strong></p>
-                </div>
-                {% endif %}
-
-                <p>Especie</p>
-                {% if form.non_field_errors %}
-                    <p class="error">{{ form.non_field_errors }}</p>
-                {% endif %}
-                
-                <select class="species_selection" name="species" id="species">
-                    <option value="" disabled selected>--Seleccione la especie--</option>
-                    <option value="1">Trueno (Ligustrum lucidum)</option>
-                    <option value="2">Jacaranda (Jacaranda mimosaefolia)</option>
-                    <option value="3">Fresno (Fraxinus uhdei)</option>
-                    <option value="4">Hule (Ficus elastica)</option>
-                    <option value="5">Palmera canaria (Phoenix canariensis)</option>
-                    <option value="6">Colorín (Erythrina coralloides)</option>
-                    <option value="7">Ficus benjamina (Ficus benjamina)</option>
-                    <option value="8">Álamo blanco (Populus alba)</option>
-                    <option value="9">Pirul (Schinus molle)</option>
-                    <option value="10">Liquidámbar (Liquidambar styraciflua)</option>
-                    <option value="11">Otro</option>
-                </select>
-                {% if form.species.errors %}
-                    <p class="error">{{ form.species.errors }}</p>
-                {% endif %}
-            </div>
-            
-            
-            <p>Dirección mas cercana</p>
-            <div class="directions_form">
-                <div class="d1">
-                    <select class="ialcaldia" name="alcaldia" id="alcadia">
-                        <option value="" disabled selected>--Alcaldia--</option>
-                        <option value="alvaro_obregon">Álvaro Obregón</option>
-                        <option value="azcapotzalco">Azcapotzalco</option>
-                        <option value="benito_juarez">Benito Juárez</option>
-                        <option value="coyoacan">Coyoacán</option>
-                        <option value="cuajimalpa_de_morelos">Cuajimalpa de Morelos</option>
-                        <option value="cuauhtemoc">Cuauhtémoc</option>
-                        <option value="gustavo_a_madero">Gustavo A. Madero</option>
-                        <option value="iztapalapa">Iztapalapa</option>
-                        <option value="la_magdalena_contreras">La Magdalena Contreras</option>
-                        <option value="miguel_hidalgo">Miguel Hidalgo</option>
-                        <option value="milpa_alta">Milpa Alta</option>
-                        <option value="tlahuac">Tláhuac</option>
-                        <option value="tlalpan">Tlalpan</option>
-                        <option value="xochimilco">Xochimilco</option>
-                        <option value="venustiano_carranza">Venustiano Carranza</option>
+                    <select class="species_selection" name="species" id="species">
+                        <option value="" disabled selected>--Seleccione la especie--</option>
+                        <option value="1">Trueno (Ligustrum lucidum)</option>
+                        <option value="2">Jacaranda (Jacaranda mimosaefolia)</option>
+                        <option value="3">Fresno (Fraxinus uhdei)</option>
+                        <option value="4">Hule (Ficus elastica)</option>
+                        <option value="5">Palmera canaria (Phoenix canariensis)</option>
+                        <option value="6">Colorín (Erythrina coralloides)</option>
+                        <option value="7">Ficus benjamina (Ficus benjamina)</option>
+                        <option value="8">Álamo blanco (Populus alba)</option>
+                        <option value="9">Pirul (Schinus molle)</option>
+                        <option value="10">Liquidámbar (Liquidambar styraciflua)</option>
+                        <option value="11">Otro</option>
                     </select>
-                    {% if form.alcaldia.errors %}
-                        <p class="error">{{ form.alcaldia.errors }}</p>
-                    {% endif %}
-
-                    <input class="icolonia" type="text" name="colonia" placeholder="colonia">
-                    {% if form.colonia.errors %}
-                        <p class="error">{{ form.colonia.errors }}</p>
+                    {% if form.species.errors %}
+                        <p class="error">{{ form.species.errors }}</p>
                     {% endif %}
                 </div>
-
-                <div class="d2">
-                    <input type="text" name="calle" id="calle" placeholder="Calle">
-                    {% if form.calle.errors %}
-                        <p class="error">{{ form.calle.errors }}</p>
-                    {% endif %}
-                    <input type="text" name="num" id="num" placeholder="Número">
-                    {% if form.num.errors %}
-                        <p class="error">{{ form.num.errors }}</p>
-                    {% endif %}
-                    <input type="text" name="cp" id="cp" placeholder="Codigo postal">
-                    {% if form.cp.errors %}
-                        <p class="error">{{ form.cp.errors }}</p>
-                    {% endif %}
-                </div>
-
-                <div class="d3">
-                    <input type="text" name="reference" id="reference" placeholder="Referencias">
-                    {% if form.reference.errors %}
-                        <p class="error">{{ form.reference.errors }}</p>
-                    {% endif %}
-                    <input type="text" name="latitude" id="latitude" placeholder="Latitud">
-                    {% if form.latitude.errors %}
-                        <p class="error">{{ form.latitude.errors }}</p>
-                    {% endif %}
-                    <input type="text" name="longitude" id="longitude" placeholder="Longitud"> 
-                    {% if form.longitude.errors %}
-                        <p class="error">{{ form.longitude.errors }}</p>
-                    {% endif %}   
-                </div>
-
-            </div>
-            
-            <p>Dimensiones</p>
-            <div class="dimensions_form">
-                <input class="ialtura" type="text" name="height" id="height" placeholder="Altura">
-                {% if form.height.errors %}
-                    <p class="error">{{ form.height.errors }}</p>
-                {% endif %}
-
-                <input class="idiametro_base" type="number" name="base_diameter" id="base_diameter" placeholder="Diametro de la base">
-                {% if form.base_diameter.errors %}
-                    <p class="error">{{ form.base_diameter.errors }}</p>
-                {% endif %}
-
-                <input class="idiametro_copa" type="number" name="crown_diameter" id="crown_diameter" placeholder="Diametro de la copa">
-                {% if form.crown_diameter.errors %}
-                    <p class="error">{{ form.crown_diameter.errors }}</p>
-                {% endif %}
-
-                <input class="idiametro_tronco" type="number" name="trunk_diameter" id="trunk_diameter" placeholder="Diametro del tronco">
-                {% if form.trunk_diameter.errors %}
-                    <p class="error">{{ form.trunk_diameter.errors }}</p>
-                {% endif %}
-
-                <input class="iinclinacion_trono" type="number" name="trunk_inclination" id="trunk_inclination" placeholder="Inclinacion del tronco">
-                {% if form.trunk_inclination.errors %}
-                    <p class="error">{{ form.trunk_inclination.errors }}</p>
-                {% endif %}
-
-                <select name="structure" id="structure">
-                    <option value="" disable selected>--Seleccione la estructura--</option>
-                    <option value="1">Copa mal equilibrada</option>
-                    <option value="2">Ramas muy largas</option>
-                    <option value="3">Troncos múltiples</option>
-                    <option value="4">Troncos codominantes</option>
-                    <option value="5">Ramas codominantes</option>
-                </select>
-                {% if form.structure.errors %}
-                    <p class="error">{{ form.structure.errors }}</p>
-                {% endif %}
-
-            </div>
-
-            <p>Salud</p>
-            <div class="health_form">
-                    <select name="health_status" id="health_status">
-                    <option value="" disabled selected>--Seleccione la condicion de salud--</option>
-                    <option value="1">Muy buena</option>
-                    <option value="2">Buena</option>
-                    <option value="3">Susceptible de mejora</option>
-                    <option value="4">Irrecuperable</option>
-                </select>
-                {% if form.health_status.errors %}
-                    <p class="error">{{ form.health_status.errors }}</p>
-                {% endif %}
-
-            </div>
-
-            <p>Acciones necesarias (opcional)</p>
-            <div class="actions_form">
-                <select class="select_action">
-                    <option value="" disabled selected>--Seleccione una accion--</option>
-                    <option value="podar">Podar</option>
-                    <option value="talar">Talar</option>
-                    <option value="desinfectar">Desinfectar</option>
-                    <option value="trasplantar">Trasplantar</option>
-                    <option value="otro">Otro</option>
-                </select>
                 
-                <select class="action_urgency">
-                    <option value="" disabled selected>--Seleccione la urgencia--</option>
-                    <option value="baja">1.Muy Baja</option>
-                    <option value="moderada">2. Moderada</option>
-                    <option value="alta">3. Alta</option>
-                    <option value="muy alta">4. Muy Alta</option>
-                </select>
+                
+                <p>Dirección mas cercana</p>
+                <div class="directions_form">
+                    <div class="d1">
+                        <select class="ialcaldia" name="alcaldia" id="alcadia">
+                            <option value="" disabled selected>--Alcaldia--</option>
+                            <option value="alvaro_obregon">Álvaro Obregón</option>
+                            <option value="azcapotzalco">Azcapotzalco</option>
+                            <option value="benito_juarez">Benito Juárez</option>
+                            <option value="coyoacan">Coyoacán</option>
+                            <option value="cuajimalpa_de_morelos">Cuajimalpa de Morelos</option>
+                            <option value="cuauhtemoc">Cuauhtémoc</option>
+                            <option value="gustavo_a_madero">Gustavo A. Madero</option>
+                            <option value="iztapalapa">Iztapalapa</option>
+                            <option value="la_magdalena_contreras">La Magdalena Contreras</option>
+                            <option value="miguel_hidalgo">Miguel Hidalgo</option>
+                            <option value="milpa_alta">Milpa Alta</option>
+                            <option value="tlahuac">Tláhuac</option>
+                            <option value="tlalpan">Tlalpan</option>
+                            <option value="xochimilco">Xochimilco</option>
+                            <option value="venustiano_carranza">Venustiano Carranza</option>
+                        </select>
+                        {% if form.alcaldia.errors %}
+                            <p class="error">{{ form.alcaldia.errors }}</p>
+                        {% endif %}
 
-                <select class="input_action_description">
-                    <option value="" disabled selected>--Seleccione la descripcion de la accion--</option>
-                    <option value="obstruccion">Obstruccion de infraestructura</option>
-                    <option value="riesgo">Riesgo de caida</option>
-                    <option value="enfermedad">Plagas</option>
-                    <option value="otro">Otro</option>
+                        <input class="icolonia" type="text" name="colonia" placeholder="colonia">
+                        {% if form.colonia.errors %}
+                            <p class="error">{{ form.colonia.errors }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="d2">
+                        <input type="text" name="calle" id="calle" placeholder="Calle">
+                        {% if form.calle.errors %}
+                            <p class="error">{{ form.calle.errors }}</p>
+                        {% endif %}
+                        <input type="text" name="num" id="num" placeholder="Número">
+                        {% if form.num.errors %}
+                            <p class="error">{{ form.num.errors }}</p>
+                        {% endif %}
+                        <input type="text" name="cp" id="cp" placeholder="Codigo postal">
+                        {% if form.cp.errors %}
+                            <p class="error">{{ form.cp.errors }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="d3">
+                        <input type="text" name="reference" id="reference" placeholder="Referencias">
+                        {% if form.reference.errors %}
+                            <p class="error">{{ form.reference.errors }}</p>
+                        {% endif %}
+                        <input type="text" name="latitude" id="latitude" placeholder="Latitud">
+                        {% if form.latitude.errors %}
+                            <p class="error">{{ form.latitude.errors }}</p>
+                        {% endif %}
+                        <input type="text" name="longitude" id="longitude" placeholder="Longitud"> 
+                        {% if form.longitude.errors %}
+                            <p class="error">{{ form.longitude.errors }}</p>
+                        {% endif %}   
+                        
+                    </div>
+
+                </div>
+                
+                <p>Dimensiones</p>
+                <div class="dimensions_form">
+                    <input class="ialtura" type="text" name="height" id="height" placeholder="Altura">
+                    {% if form.height.errors %}
+                        <p class="error">{{ form.height.errors }}</p>
+                    {% endif %}
+
+                    <input class="idiametro_base" type="number" name="base_diameter" id="base_diameter" placeholder="Diametro de la base">
+                    {% if form.base_diameter.errors %}
+                        <p class="error">{{ form.base_diameter.errors }}</p>
+                    {% endif %}
+
+                    <input class="idiametro_copa" type="number" name="crown_diameter" id="crown_diameter" placeholder="Diametro de la copa">
+                    {% if form.crown_diameter.errors %}
+                        <p class="error">{{ form.crown_diameter.errors }}</p>
+                    {% endif %}
+
+                    <input class="idiametro_tronco" type="number" name="trunk_diameter" id="trunk_diameter" placeholder="Diametro del tronco">
+                    {% if form.trunk_diameter.errors %}
+                        <p class="error">{{ form.trunk_diameter.errors }}</p>
+                    {% endif %}
+
+                    <input class="iinclinacion_trono" type="number" name="trunk_inclination" id="trunk_inclination" placeholder="Inclinacion del tronco">
+                    {% if form.trunk_inclination.errors %}
+                        <p class="error">{{ form.trunk_inclination.errors }}</p>
+                    {% endif %}
+
+                    <select name="structure" id="structure">
+                        <option value="" disable selected>--Seleccione la estructura--</option>
+                        <option value="1">Copa mal equilibrada</option>
+                        <option value="2">Ramas muy largas</option>
+                        <option value="3">Troncos múltiples</option>
+                        <option value="4">Troncos codominantes</option>
+                        <option value="5">Ramas codominantes</option>
+                    </select>
+                    {% if form.structure.errors %}
+                        <p class="error">{{ form.structure.errors }}</p>
+                    {% endif %}
+
+                </div>
+
+                <p>Salud</p>
+                <div class="health_form">
+                        <select name="health_status" id="health_status">
+                        <option value="" disabled selected>--Seleccione la condicion de salud--</option>
+                        <option value="1">Muy buena</option>
+                        <option value="2">Buena</option>
+                        <option value="3">Susceptible de mejora</option>
+                        <option value="4">Irrecuperable</option>
+                    </select>
+                    {% if form.health_status.errors %}
+                        <p class="error">{{ form.health_status.errors }}</p>
+                    {% endif %}
+
+                </div>
+
+                <p>Acciones necesarias (opcional)</p>
+                <div class="actions_form">
+                    {{ aform.action_description }}
+                    {% if aform.action_description.errors %}
+                        <p class="error">{{ aform.action_description.errors }}</p>
+                    {% endif %}
+
                     
-                </select>
+                    {{ aform.urgency }}
+                    {% if aform.urgency.errors %}
+                        <p class="error">{{ form.urgency.errors }}</p>
+                    {% endif %}
+
+                    
+                    {{ aform.cause_description }}
+                    {% if aform.cause_description.errors %}
+                        <p class="error">{{ aform.cause_description.errors }}</p>
+                    {% endif %}
 
 
-            </div>
+                </div>
 
-            <div>
-                <p>Ultima inspeccion</p>
-                <input class="date_inspection" type="date" name="last_inspection" id="last_inspection">
-                {% if form.last_inspection.errors %}
-                    <p class="error">{{ form.last_inspection.errors }}</p>
-                {% endif %}
-            </div>
+                <div>
+                    <p>Ultima inspeccion</p>
+                    <input class="date_inspection" type="date" name="last_inspection" id="last_inspection">
+                    {% if form.last_inspection.errors %}
+                        <p class="error">{{ form.last_inspection.errors }}</p>
+                    {% endif %}
+                </div>
 
-            <div class="submit">
-                <button class="submit_button" type="submit">Registrar</button>
-            </div>
+                <div class="submit">
+                    <button class="submit_button" type="submit">Registrar</button>
+                </div>
 
-        </div> 
+            </div> 
         </form>     
     
     </body>
